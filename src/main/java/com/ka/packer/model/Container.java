@@ -1,10 +1,5 @@
 package com.ka.packer.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +10,38 @@ import java.util.List;
  * Author: kakyurek
  * Date: 2018.02.03
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class Container {
 
     private List<Item> items = new ArrayList<>();
 
     private double limit;
+
+    public List<Item> getItems() {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
+
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public double getLimit() {
+        return limit;
+    }
+
+    public void setLimit(double limit) {
+        this.limit = limit;
+    }
+
+    @Override
+    public String toString() {
+        return "Container{" +
+                "items=" + items +
+                ", limit=" + limit +
+                '}';
+    }
 
 }

@@ -1,6 +1,5 @@
 package com.ka.packer.core;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -28,13 +27,12 @@ public class PropertyLoader {
      * @param configFilePath Configuration file relative class path
      * @return Loaded properties
      */
-    public Properties loadProperties(final String configFilePath) {
+    public Properties loadProperties(final String configFilePath) throws Exception {
         Properties properties = new Properties();
 
-        try (InputStream is = PropertyLoader.class.getResourceAsStream(configFilePath)) {
+        // Load properties file from class path
+        try (InputStream is = PropertyLoader.class.getClassLoader().getResourceAsStream(configFilePath)) {
             properties.load(is);
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
         }
 
         return properties;

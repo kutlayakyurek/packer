@@ -1,10 +1,5 @@
 package com.ka.packer.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 /**
  * Description: Item model which is part of a package
  * Project: packer
@@ -12,14 +7,49 @@ import lombok.ToString;
  * Author: kakyurek
  * Date: 2018.02.03
  */
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
 public class Item {
 
     private int index;
     private double weight;
-    private int value;
+    private int cost;
+
+    public Item(int index, double weight, int cost) {
+        this.index = index;
+        this.weight = weight;
+        this.cost = cost;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "index=" + index +
+                ", weight=" + weight +
+                ", cost=" + cost +
+                '}';
+    }
 
 }

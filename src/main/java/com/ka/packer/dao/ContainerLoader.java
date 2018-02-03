@@ -1,6 +1,7 @@
 package com.ka.packer.dao;
 
 import com.ka.packer.model.Container;
+import com.ka.packer.validation.ContainerValidator;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public interface ContainerLoader {
      *
      * @return Containers
      */
+    @ContainerValidator
     List<Container> load();
 
 }

@@ -13,4 +13,8 @@ public class APIException extends RuntimeException {
         super(message);
     }
 
+    public APIException(Throwable cause) {
+        super(cause);
+    }
+
 }

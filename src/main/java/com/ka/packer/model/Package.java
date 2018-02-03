@@ -1,7 +1,5 @@
 package com.ka.packer.model;
 
-import lombok.*;
-
 import java.util.List;
 
 /**
@@ -11,13 +9,23 @@ import java.util.List;
  * Author: kakyurek
  * Date: 2018.02.03
  */
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
 public class Package {
 
-    @NonNull
     private List<Item> items;
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "Package{" +
+                "items=" + items +
+                '}';
+    }
 
 }

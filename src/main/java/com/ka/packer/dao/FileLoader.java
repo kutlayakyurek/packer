@@ -1,11 +1,10 @@
 package com.ka.packer.dao;
 
-import com.ka.packer.exception.APIException;
 import com.ka.packer.model.Container;
 import com.ka.packer.model.Item;
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -19,19 +18,22 @@ import java.util.stream.Stream;
  * Author: kakyurek
  * Date: 2018.02.03
  */
-@AllArgsConstructor
 public class FileLoader implements ContainerLoader {
 
     /**
      * Absolute file path to load containers
      */
-    @NonNull
     private String filePath;
 
     /**
      * Whether file is read from classpath
      */
     private boolean classPathResource;
+
+    public FileLoader(String filePath, boolean classPathResource) {
+        this.filePath = filePath;
+        this.classPathResource = classPathResource;
+    }
 
     /**
      * Loads containers from file system
@@ -64,8 +66,8 @@ public class FileLoader implements ContainerLoader {
 
                 containers.add(container);
             });
-        } catch (Exception e) {
-            throw new APIException("Invalid file to load");
+        } catch (URISyntaxException | IOException e) {
+            // Nothing to do
         }
 
         return containers;
