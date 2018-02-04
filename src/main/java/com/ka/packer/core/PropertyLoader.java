@@ -12,6 +12,7 @@ import java.util.Properties;
  */
 public class PropertyLoader {
 
+    public static final String APPLICATION_PROPERTIES = "application.properties";
     private static final PropertyLoader instance = new PropertyLoader();
 
     private PropertyLoader() {

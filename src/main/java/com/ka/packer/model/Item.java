@@ -23,24 +23,12 @@ public class Item {
         return index;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
     public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public int getCost() {
         return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
     }
 
     @Override

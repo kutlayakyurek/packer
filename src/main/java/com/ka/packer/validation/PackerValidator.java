@@ -21,7 +21,6 @@ import java.util.Properties;
 @Aspect
 public class PackerValidator {
 
-    private static final String APPLICATION_PROPERTIES = "application.properties";
     private static double MAX_PACKAGE_WEIGHT;
     private static int MAX_ITEMS;
     private static int MAX_ITEM_COST;
@@ -33,7 +32,7 @@ public class PackerValidator {
      * @throws Exception thrown if configuration file or keys are not exist
      */
     PackerValidator() throws Exception {
-        Properties properties = PropertyLoader.getInstance().loadProperties(APPLICATION_PROPERTIES);
+        Properties properties = PropertyLoader.getInstance().loadProperties(PropertyLoader.APPLICATION_PROPERTIES);
         MAX_PACKAGE_WEIGHT = Double.parseDouble(properties.getProperty("max.package.weight"));
         MAX_ITEM_WEIGHT = Double.parseDouble(properties.getProperty("max.item.weight"));
         MAX_ITEMS = Integer.parseInt(properties.getProperty("max.items"));
@@ -59,7 +58,7 @@ public class PackerValidator {
 
             // Validate each container
             containers.forEach(c -> {
-                double packageLimit = c.getLimit();
+                int packageLimit = c.getLimit();
 
                 if (packageLimit <= 0 || packageLimit > MAX_PACKAGE_WEIGHT) {
                     throw new APIException("Max weight that a package can take should be lower than or equal to 100 and bigger than 0");

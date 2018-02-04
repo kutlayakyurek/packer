@@ -1,5 +1,6 @@
 package com.ka.packer.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,9 @@ public class Package {
     private List<Item> items;
 
     public List<Item> getItems() {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
         return items;
     }
 

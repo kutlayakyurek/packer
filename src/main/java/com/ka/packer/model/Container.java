@@ -14,7 +14,7 @@ public class Container {
 
     private List<Item> items = new ArrayList<>();
 
-    private double limit;
+    private int limit;
 
     public List<Item> getItems() {
         if (items == null) {
@@ -28,11 +28,11 @@ public class Container {
         this.items = items;
     }
 
-    public double getLimit() {
+    public int getLimit() {
         return limit;
     }
 
-    public void setLimit(double limit) {
+    public void setLimit(int limit) {
         this.limit = limit;
     }
 

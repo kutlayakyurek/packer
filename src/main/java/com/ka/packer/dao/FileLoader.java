@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 /**
@@ -28,7 +29,11 @@ public class FileLoader implements ContainerLoader {
     /**
      * Whether file is read from classpath
      */
-    private boolean classPathResource;
+    private boolean classPathResource = false;
+
+    public FileLoader(String filePath) {
+        this.filePath = filePath;
+    }
 
     public FileLoader(String filePath, boolean classPathResource) {
         this.filePath = filePath;
@@ -42,6 +47,7 @@ public class FileLoader implements ContainerLoader {
      */
     public List<Container> load() {
         final List<Container> containers = new ArrayList<>();
+        AtomicInteger containerIndex = new AtomicInteger(0);
 
         // Reading and parsing input file
         try (Stream<String> stream = Files.lines(!classPathResource ? Paths.get(filePath) : Paths.get(ClassLoader.getSystemResource(filePath).toURI()))) {
@@ -50,7 +56,7 @@ public class FileLoader implements ContainerLoader {
 
                 // Splitting parts by colon to get limit and items separately
                 String[] containerParts = s.trim().split(":");
-                double weightLimit = Double.parseDouble(containerParts[0]);
+                int weightLimit = Integer.parseInt(containerParts[0].trim());
                 container.setLimit(weightLimit);
 
                 // Iterating and parsing items of container with format (1,53.38,€45) (2,88.62,€98)
@@ -65,6 +71,7 @@ public class FileLoader implements ContainerLoader {
                 }
 
                 containers.add(container);
+                containerIndex.getAndDecrement();
             });
         } catch (URISyntaxException | IOException e) {
             // Nothing to do
