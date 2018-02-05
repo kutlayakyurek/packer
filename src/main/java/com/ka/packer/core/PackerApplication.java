@@ -15,7 +15,7 @@ public class PackerApplication {
     private static final boolean MODE_TEST = false;
 
     public static void main(String[] args) throws Exception {
-        String filePath = "file.txt";
+        String filePath;
 
         if (!MODE_TEST) {
 
@@ -25,10 +25,11 @@ public class PackerApplication {
             }
 
             filePath = args[0];
+        } else {
+            filePath = "test-file.txt";
         }
 
-
-        System.out.println("Result is:\n" + Packer.pack(filePath));
+        System.out.println(Packer.pack(filePath));
     }
 
 }
