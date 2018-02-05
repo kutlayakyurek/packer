@@ -31,10 +31,6 @@ public class FileLoader implements ContainerLoader {
      */
     private boolean classPathResource = false;
 
-    public FileLoader(String filePath) {
-        this.filePath = filePath;
-    }
-
     public FileLoader(String filePath, boolean classPathResource) {
         this.filePath = filePath;
         this.classPathResource = classPathResource;
@@ -60,7 +56,6 @@ public class FileLoader implements ContainerLoader {
                 container.setLimit(weightLimit);
 
                 // Iterating and parsing items of container with format (1,53.38,€45) (2,88.62,€98)
-                Item item;
                 String[] itemParts;
                 String[] items = containerParts[1].trim().split(" ");
 

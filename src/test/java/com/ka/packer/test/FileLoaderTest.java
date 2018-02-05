@@ -1,4 +1,4 @@
-package com.ka.packer.test.unit;
+package com.ka.packer.test;
 
 import com.ka.packer.dao.ContainerLoader;
 import com.ka.packer.dao.FileLoader;

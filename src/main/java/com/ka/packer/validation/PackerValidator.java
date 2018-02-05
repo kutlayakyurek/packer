@@ -48,8 +48,8 @@ public class PackerValidator {
      */
     @Around("@annotation(ContainerValidator)")
     public Object aroundDataLoader(ProceedingJoinPoint point) throws Throwable {
-        Object[] args = point.getArgs();
 
+        // Validate input after loading process
         try {
             Object result = point.proceed();
 
