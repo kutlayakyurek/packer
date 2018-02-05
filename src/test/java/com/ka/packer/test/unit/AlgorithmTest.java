@@ -1,4 +1,4 @@
-package com.ka.packer.test;
+package com.ka.packer.test.unit;
 
 import com.ka.packer.model.Container;
 import com.ka.packer.model.Item;
